@@ -53,3 +53,43 @@ Manage the permissions this service has. By default, it's AWS service has no per
 If you want to generate logs for API Gateway for example, you would have to give it the right permissions.
 
 ---
+
+## API-specific Features & Options
+
+**Resources**
+
+Manage resources and methods from our API.
+
+A resource is just like a path.
+
+To make it live you always have to click on Actions > Deploy API
+
+**Stages**
+
+Stages are like snapshots of your API, deployed snapshots. You need to deploy the different stages.
+
+The actual work happens under resources.
+
+**Authorizers**
+
+Allows you to add authentication to your API
+
+**Models**
+
+Allows you to define the shape of the data you work with in the API (optional)
+
+You can you the models to validate incoming data, see if it fits that schema and reject it if it does not.
+
+**Documentation**
+
+Important if you plan to expose your API to other developers.
+
+**Binary Support**
+
+Important if you plan to sending files along with your requests.
+
+**Dashboard**
+
+High level how API performs and works
+
+---
