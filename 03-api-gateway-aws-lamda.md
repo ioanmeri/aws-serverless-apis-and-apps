@@ -93,3 +93,58 @@ Important if you plan to sending files along with your requests.
 High level how API performs and works
 
 ---
+
+## Introducing the Request-Response Cycle
+
+Request = Path + Method
+
+Request-Response Cycle depicts the flow of the data
+
+can also Test an API from the console
+
+### 1. Hits the **Method Request** box
+
+Defines how requests reaching this endpoint should actually look like.
+
+We can reject requests if they don't fit a certain schema
+
+In Settings: can set up
+
+- Authorization
+- Request Validator
+- API Key Required
+
+Can check for **URL Query String Parameters**
+
+Check if **HTTP Request Headers** fit our scheme or needs
+
+Can also check the **Request Body** and can connect it to a **model**
+
+acts like a gatekeeper, it ensures that incoming requests have a certain shape, have certain data, fulfill certain requirements.
+
+### 2. Integration Request
+
+It's about transforming incoming data into the shape we want to use it on the action we'are about to trigger.
+
+The role is to trigger this mock / lamda or something else and possibly if we want to transform our incoming request data.
+
+Not only body data, also headers or metadata like authenticated users.
+
+### 3. Integration Response
+
+The first thing which gets triggered as soon as our action is done.
+
+The same with what Integration Request does, just the other way around.
+
+### 4. Method Response
+
+Gatekeeper for response data. Defines the shape that our response should have.
+
+- Configure different status codes
+- What headers should allow to have
+- Type of data
+- Can use models
+
+It's not binding because we need to send a response at the end.
+
+---
