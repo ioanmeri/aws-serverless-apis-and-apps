@@ -153,4 +153,4 @@ It's not binding because we need to send a response at the end.
 
 Configure as **proxy resource** means it will catch-all resource, catching all other paths and methods.
 
-It can be used e.g. for a fullstack express server
+It can be used e.g. for a fullstack express server (limited support)
