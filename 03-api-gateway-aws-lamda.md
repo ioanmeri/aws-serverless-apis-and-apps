@@ -148,3 +148,9 @@ Gatekeeper for response data. Defines the shape that our response should have.
 It's not binding because we need to send a response at the end.
 
 ---
+
+## Creating a Resource (= URL Path)
+
+Configure as **proxy resource** means it will catch-all resource, catching all other paths and methods.
+
+It can be used e.g. for a fullstack express server
