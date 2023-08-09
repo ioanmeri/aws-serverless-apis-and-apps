@@ -154,3 +154,33 @@ It's not binding because we need to send a response at the end.
 Configure as **proxy resource** means it will catch-all resource, catching all other paths and methods.
 
 It can be used e.g. for a fullstack express server (limited support)
+
+---
+
+## Handling CORS and the OPTIONS Preflight Request
+
+CORS = Cross Origin Resource Sharing
+
+It's a security model where in general it's not allowed to access resources on a server from another server.
+
+The server e.g. **api.com** need to send the right headers to the client e.g. **example.com** to allow cross server communication
+
+**Preflight**
+
+It's send to anything but GET and HEAD requests. Are there to check if the post request that's about to be sent is available and if it's allowed to send a POST request.
+
+So you need to provide an options endpoint so that Chrome can send its preflight request and this OPTIONS endpoint also need to return the right CORS headers to inform Chrome that it is OK to send a POST, and it is ok to do so even though we're using different resources, different servers.
+
+In AWS the checkbox
+
+**Enable API Gateway CORS**
+
+is automatically configured to send the right headers back to the client / browser
+
+Now in the Request Lifecycle of OPTIONS request in the **Integration Response** > **Header Mappings** we see the headers related to CORS:
+
+- Access-Control-Allow-Headers
+- Access-Control-Allow-Methods
+- Access-Control-Allow-Origin
+
+---
