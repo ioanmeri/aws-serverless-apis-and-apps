@@ -222,3 +222,26 @@ v
 - DELETE /book/:id ---> Lamda Function
 
 ---
+
+## Create a Lamda
+
+**Author from scratch** > enter name / select programming language > Create function
+
+On the left Side are triggers, on the right side access rights your function has (e.g. Amazon CloudWatch Logs)
+
+Write the node.js function in the editor
+
+```
+exports.handler = (event, context, callback) => {
+  callback(null, {message: 'Hi, I'm Lamda!});
+}
+```
+
+can pass
+
+- Environment variables
+- Tags (for analytics or builts)
+- Execution role (defines the permissions of this function)
+- Basic settings (timeout to avoid infinite loop charging)
+
+---
