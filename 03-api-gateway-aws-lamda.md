@@ -184,3 +184,41 @@ Now in the Request Lifecycle of OPTIONS request in the **Integration Response** 
 - Access-Control-Allow-Origin
 
 ---
+
+## What is AWS Lamda?
+
+How it works:
+
+**Event Source**
+
+- **S3(e.g. file gets uploaded)**
+- **CloudWatch(scheduled)**
+- **API Gateway (HTTP Request)**
+- ...
+
+triggers
+
+v
+
+**Your Code**
+
+- NodeJS / Python / Java / C#
+- ...
+
+v
+
+**Result**
+
+- Interact with other AWS Services
+
+v
+
+**Return Response**
+
+### AWS API Gateway + AWS Lamda
+
+- POST /book ---> Lamda Function
+- GET /books ---> Lamda Function
+- DELETE /book/:id ---> Lamda Function
+
+---
