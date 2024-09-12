@@ -245,3 +245,15 @@ can pass
 - Basic settings (timeout to avoid infinite loop charging)
 
 ---
+
+## Body Mapping template
+
+**Transform API Gateway data to proper structure for Lamda function**
+
+In the integration request and response we can use it to map the data passed to the action
+
+Integration request > Body Mapping Templates > add template (e.g. application/json)
+
+```
+
+```
