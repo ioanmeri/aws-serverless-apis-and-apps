@@ -254,6 +254,25 @@ In the integration request and response we can use it to map the data passed to 
 
 Integration request > Body Mapping Templates > add template (e.g. application/json)
 
+
+Template mapping example:
+```
+{
+  "age": $input.json('$.personData.age')
+}
+
+```
+
+$input = Variable provided by AWS, gives you access to your request data (body, params, ...)
+
+json('$') => Extracts complete request body
+
+With body mapping template we have a clear separation between API Gateway where we receive our request and work with it and lambda where we expect to get data in a certain structure and then do something with it.
+
+In integration response we can also use mappings.
+
+---
+
 ```
 
 ```
