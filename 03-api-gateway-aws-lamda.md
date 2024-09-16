@@ -248,12 +248,15 @@ can pass
 
 ## Body Mapping template
 
+**They simply allow you to control which data your action receives (e.g. Lambda)**
+
 **Transform API Gateway data to proper structure for Lamda function**
 
 In the integration request and response we can use it to map the data passed to the action
 
 Integration request > Body Mapping Templates > add template (e.g. application/json)
 
+`$input`  is a reserved variable, provided by AWS which gives you access to the input payload (request body, params, headers) of your request.
 
 Template mapping example:
 ```
@@ -271,8 +274,25 @@ With body mapping template we have a clear separation between API Gateway where 
 
 In integration response we can also use mappings.
 
+### Mapping Response Data
+
+`$input` is the callback info sent back by Lambda, `json('$')` then gives us the data passed with the callback
+
 ---
 
-```
+## Using Models & Validating Requests
 
-```
+To create a Model:
+
+1. API Resource
+2. Go to API Resouce -> Models
+3. Create Data Model in **JSON schema** format
+4. Go to API Resource -> Resources
+5. Click on **Method Request**
+6. In Request Body register the Model
+
+---
+
+
+
+
