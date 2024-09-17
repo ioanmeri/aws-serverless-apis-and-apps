@@ -293,6 +293,10 @@ To create a Model:
 
 ---
 
+## Models & Mappings
 
+Models provide an easier way to provide validation but the same can be done in lambda function.
 
+We can use models in Integration Request (which is for transforming data and forwarding it in the action)
 
+---
