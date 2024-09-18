@@ -300,3 +300,31 @@ Models provide an easier way to provide validation but the same can be done in l
 We can use models in Integration Request (which is for transforming data and forwarding it in the action)
 
 ---
+
+## Path parameters
+
+API resource > New Child Resource > Resource Path
+
+```
+/compare-yourself/{type}
+```
+
+Now a GET method in the path can be created.
+
+In Integration request add a Body Mapping Template with content-type: `application/json`
+
+```
+{
+  "type": "$input.params('type')"
+}
+```
+
+In lambda:
+
+```
+const type = event.type;
+```
+
+---
+
+
