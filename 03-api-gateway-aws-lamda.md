@@ -327,4 +327,23 @@ const type = event.type;
 
 ---
 
+## Accessing the API from the WEB
 
+1. CORS needs to be enabled
+-  API resource > Method Response > Add Header
+-  Quicker way: Select resource > Enable CORS > adds all CORS headers needed
+
+2. Alse need to deploy the API
+- Actions > Deploy API
+
+```
+var xhr = new XMLHTTPRequest()
+xhr.open('POST', '....url....');
+xhr.onreadystatechange = function(event){
+  console.log(event.target.response);
+}
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify({age: 28, height: 72, income: 2500}))
+```
+
+---
