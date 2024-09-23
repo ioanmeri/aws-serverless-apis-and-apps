@@ -30,3 +30,29 @@ Optional: Partition Key + Sort Key
 Can also set a **Global Secondary Index** and **Local Secondary Index**
 
 ---
+
+## NoSQL vs SQL
+
+NoSQL
+- No Relations
+- High Flexibilility (No/Weak Scheams)
+- Data Repetition
+- No Integrity Checks
+- Easy Scalability
+
+SQL (Relational)
+- Relations
+- Limited Flexibility (Strong Schemas)
+- No Data Repetition
+- Integrity Checks
+- Harder Scalability
+
+---
+
+## AWS Dynamo DB + AWS Lambda
+
+Event Source -> Trigger Function -> Lamda Function
+
+Data Repository <- Store & Retrieve Data <- Lamda Function
+
+---
