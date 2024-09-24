@@ -56,3 +56,11 @@ Event Source -> Trigger Function -> Lamda Function
 Data Repository <- Store & Retrieve Data <- Lamda Function
 
 ---
+
+## Creating a Table in Dynamo DB
+
+Services > Amazon DynamoDB > Create table > table name > Partition key (e.g. UserId)
+
+Can also add sort key and index 
+
+---
