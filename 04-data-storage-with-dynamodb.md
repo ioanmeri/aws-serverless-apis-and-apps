@@ -63,4 +63,14 @@ Services > Amazon DynamoDB > Create table > table name > Partition key (e.g. Use
 
 Can also add sort key and index 
 
+
+### Read & Write Capacity
+
+While creating a DynamoDB table
+
+Depends on units per second and the **size** of the item of reading / writing (KB)
+
+
+e.g. 5 times / second
+
 ---
