@@ -74,3 +74,22 @@ Depends on units per second and the **size** of the item of reading / writing (K
 e.g. 5 times / second
 
 ---
+
+### Create Item
+
+On items tab create an item, the primary key is mandatory.
+
+You can append a new item with a specified type
+
+```
+{
+  UserId: 'ha830klajsdf30',
+  Age: 28,
+  Height: 72,
+  Income Number: 2500
+}
+```
+
+You can also scan or query the table with filters.
+
+---
