@@ -93,3 +93,9 @@ You can append a new item with a specified type
 You can also scan or query the table with filters.
 
 ---
+
+## What about multiple Databases?
+
+You can have one database per region
+
+---
