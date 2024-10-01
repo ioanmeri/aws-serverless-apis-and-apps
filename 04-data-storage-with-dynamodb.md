@@ -99,3 +99,19 @@ You can also scan or query the table with filters.
 You can have one database per region
 
 ---
+
+## Accessing DynamoDB from Lambda
+
+You don't need to install `aws-sdk` from lambda. Only needed if you plan on using the SDK from you machine.
+
+```
+const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB({
+  region: 'us-east-2',
+  apiVersion: '2012-08-10'
+})
+
+exports.fn = (event, context, callback) => {
+  
+}
+```
