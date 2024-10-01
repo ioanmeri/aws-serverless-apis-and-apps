@@ -104,6 +104,11 @@ You can have one database per region
 
 You don't need to install `aws-sdk` from lambda. Only needed if you plan on using the SDK from you machine.
 
+Why outside of the handler function? The code running here is not online all the time. Whenever a trigger occurs running your lamda function AWS quickly spins up a server environment, wrapper containing your lambda function.
+It keeps it alive for a couple of minutes and it will reuse that wrapper if it remains active on requests.
+
+Here we are taking advantage of it, if the wrapper start it will execute everything in this file not just your function handler, if the wrapper is still up though, it will not re-execute the part outside of the function handler and that gives us a little performance edge if we put the code which doesn't need to be executed it on each triggering event outside of the handler.
+
 ```
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB({
