@@ -163,3 +163,9 @@ dynamodb.putItem(params, function(err, data){
 ```
 
 ---
+
+## Setting Permissions Right
+
+Service IAM &rarr; Roles &rarr; Find role used in lambda &rarr; Attach Policy &rarr; Search for  "AmazonDynamoDBFullAccess"
+
+---
