@@ -229,3 +229,21 @@ dynamodb.putItem(params, function(err, data){
 ```
 
 ---
+
+## Mapping the Response
+
+If there is no Integration Response lamda will forward everything 
+
+**Web test**
+
+```
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'https://bq4jksowdd.execute-api.us-east-2.amazonaws.com/dev/compare-yourself');
+xhr.onreadystatechange = function(event){
+  console.log(event.target.response);
+}
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify({age: 26, height: 71, income 2100}));
+```
+
+---
