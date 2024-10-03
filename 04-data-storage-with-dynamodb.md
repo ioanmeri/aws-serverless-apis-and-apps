@@ -169,3 +169,63 @@ dynamodb.putItem(params, function(err, data){
 Service IAM &rarr; Roles &rarr; Find role used in lambda &rarr; Attach Policy &rarr; Search for  "AmazonDynamoDBFullAccess"
 
 ---
+
+## Using API Gateway (Request) Data for Item Creation
+
+To forward specific parameters from Integration Request via Template to Dynamo DB
+
+**In Lamda Template**
+
+```
+#set($inputRoot = $input.path('$'))
+{
+  "age": "$inputRoot.age",
+  "height": "$inputRoot.height",
+  "income": "$inputRoot.income",
+}
+```
+
+You can also forward the full request body.
+
+The template is used not only to extract data but also to transform the type of data from **number** to **string**.
+
+**In Lamda function**
+
+```
+const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB({
+  region: 'us-east-2',
+  apiVersion: '2012-08-10'
+})
+
+exports.fn = (event, context, callback) => {
+  const params = {
+    Item: {
+      "UserId": {
+        S: "user_" + Math.random()
+      },
+      "Age": {
+        N: event.age
+      },
+      "Height": {
+        N: event.height
+      },
+      "Income": {
+        N: event.income
+      }
+    },
+    TableName: "compare-yourself"
+  };
+dynamodb.putItem(params, function(err, data){
+  if(err){
+      console.log(err);
+      callback(err);
+    } else {
+      console.log(data);
+      callback(null, data);
+    }
+  });
+}
+```
+
+---
