@@ -280,3 +280,34 @@ exports.handler = (event, context, callback) => {
 
 ---
 
+## Improving the IAM Permissions
+
+Full access role it's not a good practice
+
+### Put Item Role
+
+IAM Permissions -> Policies -> Create Policy -> Policy Generator -> AWS Service: Amazon DynamoDB 
+-> Actions: PutItem -> Amazon Resource Name (ARN): find ARN from dynamodb table details -> Add Statement -> Policy Name: `dyanomodb-putitem` -> Create Policy
+
+In Roles-> `cy-store-data-role`
+
+Detach Policy of `AmazonDynamoDBFullAccess` and attach the new policy, Filter: Customer Managed and select the `dynamodb-putitem`
+
+The getItem API now is should fail.
+
+### Get Data Role
+
+**For the get item we should create a new policy and a new role for that policy**
+
+IAM -> Policies -> Policy Generator -> AWS Service: Amazon DynamoDB -> Actions: GetItem -> 
+Scan -> use the dynaodb ARN -> Add Statement -> Policy Name: `dynamodb-get-scan` -> Create Policy
+
+In Roles ->  Create role -> AWS Lamda -> Policy Type: Customer Managed ->
+`dynamodb-get-scan` -> Role name: `cy-get-data-role`
+
+In Lamda -> cy-get-data -> Configuration -> Existing role: `cy-get-data-role` -> Save
+
+Now I have clear permissions settings and no overlappings and no function is allowed to do more than it needs to do, principle of least privilege.
+
+
+---
