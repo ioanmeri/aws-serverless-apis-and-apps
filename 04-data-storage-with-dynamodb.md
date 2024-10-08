@@ -436,3 +436,11 @@ and click create role
 3. In Lamda -> Functions -> cy-delete-data -> Existing role: cy-delete-data-role
 
 ---
+
+## Giving Lambda Logging Rights
+
+If you do want your Lambda functions to create logs (in CloudWatch), make sure to adjust the "Roles" we created.
+
+For that, visit IAM => Roles and select the roles you created for Lambda. Make sure to add a new policy by clicking "Attach Policy". Then, filter for "Lambda" and choose the "AWSLambdaBasicExecutionRole" which will give Lambda the base permissions it requires for writing logs to CloudWatch.
+
+---
