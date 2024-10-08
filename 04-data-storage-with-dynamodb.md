@@ -411,3 +411,28 @@ exports.handler = (event, context, callback) => {
 }
 
 ```
+
+---
+
+## Preparing Delete Permissions
+
+
+1. IAM -> Policies -> Create Policy -> Policy Generator -> AWS Service: Amazon DynamoDB
+-> Actions: DeleteItem
+
+Copy ARN of DynamoDB table from Overview Tab
+
+In Policy
+
+-> Amazon Resource Name (ARN): Paste copied ARN
+
+Policy Name: dynamodb-deleteitem and Create Policy
+
+2. Also Create Role, Filter: Customer Managed and choose: dynamodb-deleteItem
+give Role name: cy-delete-data-role
+
+and click create role
+
+3. In Lamda -> Functions -> cy-delete-data -> Existing role: cy-delete-data-role
+
+---
