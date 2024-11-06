@@ -472,3 +472,55 @@ exports.handler = (event, context, callback) => {
 }
 
 ```
+
+## Mapping DynamoDB Responses
+
+API Gateway -> compare-yourself -> Models -> Create New model: CompareDataArray
+
+1. Copy schema of a single item to an array 
+
+```
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CompareData",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "age": {"type": "integer"},
+      "height": {"type": "integer"},
+      "income": {"type": "integer"}
+    },
+    "required": ["age", "height", "income"]
+  }
+}
+```
+
+2. Assign the created model into a resource
+
+API Gateway -> compare-yourself -> Resources -> GET -> Method Response
+
+Go to body mapping template -> Response Body for 200: CompareDataArray
+
+> The method response doesn't actually block the response just because it is not fitting the model. It is only a better practice
+
+3. Use the created model in the Integration Response
+
+Integration Response -> Body Mapping Template -> Generate template: CompareDataArray
+
+```
+#set($inputRoot = $input.path('S'))
+
+#foreach($elem in $inputRoot)
+{
+  "age": $elem.age,
+  "height": $elem.height,
+  "income": $elem.income
+}
+#if($foreach.hasNext),#end
+#end
+```
+
+Now we enforce the response to be an array even if it's a single item (object)
+
+---
