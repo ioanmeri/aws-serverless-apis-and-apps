@@ -444,3 +444,31 @@ If you do want your Lambda functions to create logs (in CloudWatch), make sure t
 For that, visit IAM => Roles and select the roles you created for Lambda. Make sure to add a new policy by clicking "Attach Policy". Then, filter for "Lambda" and choose the "AWSLambdaBasicExecutionRole" which will give Lambda the base permissions it requires for writing logs to CloudWatch.
 
 ---
+
+## Deleting Items
+
+```
+const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB({region: 'us-east-2', apiVersion: '2012-08-10'});
+
+exports.handler = (event, context, callback) => {
+  const params = {
+    Key: {
+      "UserId": {
+        S: "ha830klajsdf30"
+      }
+    },
+    TableName: "compare-yourself"
+  };
+  dynamodb.deleteItem(params, function(err, data){
+    if(err){
+      console.log(err);
+      callback(err);
+    } else {
+      console.log(data);
+      callback(null,data);
+    }
+  }
+}
+
+```
